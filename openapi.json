@@ -2,7 +2,8 @@
   "openapi": "3.0.1",
   "info": {
     "title": "Intervals Connector",
-    "version": "1.0.0"
+    "version": "1.0.0",
+    "description": "Connector for Intervals.icu API"
   },
   "servers": [
     {
@@ -13,15 +14,17 @@
   "paths": {
     "/intervals": {
       "post": {
-        "summary": "Call Intervals.icu API via connector",
+        "summary": "Proxy to Intervals.icu API",
+        "operationId": "callIntervalsAPI",
         "requestBody": {
+          "required": true,
           "content": {
             "application/json": {
               "schema": {
                 "type": "object",
                 "properties": {
-                  "method": { "type": "string" },
-                  "path": { "type": "string" },
+                  "method": { "type": "string", "example": "GET" },
+                  "path": { "type": "string", "example": "events?oldest=2025-10-17&newest=2025-10-17" },
                   "body": { "type": "object" }
                 },
                 "required": ["method", "path"]
@@ -30,7 +33,9 @@
           }
         },
         "responses": {
-          "200": { "description": "Successful response" }
+          "200": {
+            "description": "Successful response from Intervals.icu API"
+          }
         }
       }
     }
