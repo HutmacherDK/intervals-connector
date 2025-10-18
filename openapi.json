@@ -1,21 +1,21 @@
 {
-  "openapi": "3.0.1",
+  "openapi": "3.1.0",
   "info": {
     "title": "Intervals Connector",
     "version": "1.0.0",
-    "description": "Connector for Intervals.icu API"
+    "description": "Proxy for Intervals.icu API"
   },
   "servers": [
     {
-      "url": "https://intervals-connector.onrender.com",
+      "url": "https://intervals-connector.onrender.com/",
       "description": "Render deployment base URL"
     }
   ],
   "paths": {
     "/intervals": {
       "post": {
-        "summary": "Proxy to Intervals.icu API",
-        "operationId": "callIntervalsAPI",
+        "operationId": "proxyIntervals",
+        "summary": "Forward requests to Intervals.icu API",
         "requestBody": {
           "required": true,
           "content": {
@@ -23,9 +23,17 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "method": { "type": "string", "example": "GET" },
-                  "path": { "type": "string", "example": "events?oldest=2025-10-17&newest=2025-10-17" },
-                  "body": { "type": "object" }
+                  "method": {
+                    "type": "string",
+                    "example": "GET"
+                  },
+                  "path": {
+                    "type": "string",
+                    "example": "events?oldest=2025-10-17&newest=2025-10-17"
+                  },
+                  "body": {
+                    "type": "object"
+                  }
                 },
                 "required": ["method", "path"]
               }
@@ -39,5 +47,6 @@
         }
       }
     }
-  }
+  },
+  "components": {}
 }
