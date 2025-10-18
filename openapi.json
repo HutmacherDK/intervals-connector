@@ -4,6 +4,12 @@
     "title": "Intervals Connector",
     "version": "1.0.0"
   },
+  "servers": [
+    {
+      "url": "https://intervals-connector.onrender.com",
+      "description": "Render deployment base URL"
+    }
+  ],
   "paths": {
     "/intervals": {
       "post": {
